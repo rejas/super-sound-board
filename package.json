@@ -1,0 +1,24 @@
+{
+  "name": "super-sound-board",
+  "version": "1.0.0",
+  "description": "sudo apt install python3-gst-1.0 pip install playsound",
+  "main": "index.js",
+  "dependencies": {
+    "sound-play": "^1.1.0",
+    "tinykeys": "^1.1.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: nospecified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rejas/super-sound-board.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rejas/super-sound-board/issues"
+  },
+  "homepage": "https://github.com/rejas/super-sound-board#readme"
+}
