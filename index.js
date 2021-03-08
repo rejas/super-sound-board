@@ -7,6 +7,8 @@ const sound = require('sound-play');
 // Path handling
 const path = require("path");
 
+const mappings = require("./sounds/mappings");
+
 // Allows us to listen for events from stdin
 readline.emitKeypressEvents(process.stdin);
 
@@ -25,12 +27,22 @@ process.stdin.on('keypress', (str, key) => {
     // User has triggered a keypress, now do whatever we want!
     // ...
 
-    console.log(key);
-    console.log(str);
+    //console.log(key);
+    //console.log(str);
 
-    if (key.name === "c") {
-        const filePath = path.join(__dirname, "/sounds/cow.mp3");
+    let soundFile;
+    for (let entry of mappings.entries) {
+
+        if (entry.key.sequence === key.sequence && entry.key.meta == key.meta) {
+            soundFile = entry.file;
+        }
+    }
+
+    if (soundFile) {
+        const filePath = path.join(__dirname, "/sounds/" + soundFile);
         sound.play(filePath, 1);
+    } else {
+        console.log(key);
     }
 });
 

@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {
+      "key": {"sequence":  "p", "meta": false}, "file": "cow.mp3"
+    },
+    {
+      "key": {"sequence":  "y", "meta": false}, "file": "door.mp3"
+    }
+  ]
+}
