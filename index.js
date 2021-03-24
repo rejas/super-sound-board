@@ -2,12 +2,14 @@
 const readline = require('readline');
 
 // Sound library
-const sound = require('sound-play');
+const Audic = require("audic");
 
 // Path handling
 const path = require("path");
 
 const mappings = require("./sounds/mappings");
+
+let audio;
 
 // Allows us to listen for events from stdin
 readline.emitKeypressEvents(process.stdin);
@@ -32,15 +34,18 @@ process.stdin.on('keypress', (str, key) => {
 
     let soundFile;
     for (let entry of mappings.entries) {
-
         if (entry.key.sequence === key.sequence && entry.key.meta == key.meta) {
             soundFile = entry.file;
         }
     }
 
     if (soundFile) {
+        if (audio) {
+            audio.pause();
+        }
         const filePath = path.join(__dirname, "/sounds/" + soundFile);
-        sound.play(filePath, 1);
+        audio = new Audic(filePath);
+        audio.play();
     } else {
         console.log(key);
     }
