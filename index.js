@@ -7,6 +7,10 @@ const Audic = require("audic");
 // Path handling
 const path = require("path");
 
+// Config
+const config = require("./config");
+
+// Mappings keys <-> sounds
 const mappings = require("./sounds/mappings");
 
 let audio;
@@ -34,7 +38,7 @@ process.stdin.on('keypress', (str, key) => {
 
     let soundFile;
     for (let entry of mappings.entries) {
-        if (entry.key.sequence === key.sequence && entry.key.meta == key.meta) {
+        if (entry.key.sequence === key.sequence && entry.key.meta === key.meta) {
             soundFile = entry.file;
         }
     }
@@ -45,7 +49,8 @@ process.stdin.on('keypress', (str, key) => {
         }
         const filePath = path.join(__dirname, "/sounds/" + soundFile);
         audio = new Audic(filePath);
-        audio.play();
+        audio.volume = config.volume;
+        audio.play().then(() => console.log("done!"));
     } else {
         console.log(key);
     }
