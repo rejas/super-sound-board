@@ -1,13 +1,25 @@
 {
   "entries": [
     {
-      "key": {"sequence": "d", "meta": false}, "file": "duck.mp3"
+      "key": {"sequence": "b", "meta": false}, "file": "door.mp3"
     },
     {
       "key": {"sequence": "c", "meta": false}, "file": "cow.mp3"
     },
     {
-      "key": {"sequence": "b", "meta": false}, "file": "door.mp3"
+      "key": {"sequence": "d", "meta": false}, "file": "dog.mp3"
+    },
+    {
+      "key": {"sequence": "k", "meta": false}, "file": "cat.mp3"
+    },
+    {
+      "key": {"sequence": "l", "meta": false}, "file": "lion.mp3"
+    },
+    {
+      "key": {"sequence": "m", "meta": false}, "file": "monkey.mp3"
+    },
+    {
+      "key": {"sequence": "r", "meta": false}, "file": "raven.mp3"
     }
   ]
 }
