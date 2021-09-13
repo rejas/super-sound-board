@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "audic": "^2.0.0",
+    "audic-forked": "^0.1.0",
     "tinykeys": "^1.2.0"
   },
   "scripts": {

@@ -2,7 +2,7 @@
 const readline = require('readline');
 
 // Sound library
-const Audic = require("audic");
+const Audic = require("audic-forked");
 
 // Path handling
 const path = require("path");
@@ -13,8 +13,6 @@ const config = require("./config");
 // Mappings keys <-> sounds
 const mappings = require("./sounds/mappings");
 
-let audio;
-
 // Allows us to listen for events from stdin
 readline.emitKeypressEvents(process.stdin);
 
@@ -22,8 +20,11 @@ readline.emitKeypressEvents(process.stdin);
 // functionality Node.js adds by default
 process.stdin.setRawMode(true);
 
+let audio = new Audic();
+audio.volume = config.volume;
+
 // Start the keypress listener for the process
-process.stdin.on('keypress', (str, key) => {
+process.stdin.on('keypress', async (str, key) => {
 
     // "Raw" mode so we must do our own kill switch
     if(key.sequence === '\u0003') {
@@ -32,7 +33,6 @@ process.stdin.on('keypress', (str, key) => {
 
     // User has triggered a keypress, now do whatever we want!
     // ...
-
     //console.log(key);
     //console.log(str);
 
@@ -44,13 +44,11 @@ process.stdin.on('keypress', (str, key) => {
     }
 
     if (soundFile) {
-        if (audio) {
-            audio.pause();
-        }
+        if (audio.playing)
+            await audio.pause();
         const filePath = path.join(__dirname, "/sounds/" + soundFile);
-        audio = new Audic(filePath);
-        audio.volume = config.volume;
-        audio.play().then(() => console.log("done!"));
+        await audio.setSrc(filePath);
+        await audio.play();
     } else {
         console.log(key);
     }

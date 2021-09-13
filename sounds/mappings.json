@@ -1,10 +1,13 @@
 {
   "entries": [
     {
-      "key": {"sequence":  "p", "meta": false}, "file": "cow.mp3"
+      "key": {"sequence": "d", "meta": false}, "file": "duck.mp3"
     },
     {
-      "key": {"sequence":  "y", "meta": false}, "file": "door.mp3"
+      "key": {"sequence": "c", "meta": false}, "file": "cow.mp3"
+    },
+    {
+      "key": {"sequence": "b", "meta": false}, "file": "door.mp3"
     }
   ]
 }
