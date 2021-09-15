@@ -11,13 +11,12 @@ const path = require("path");
 const config = require("./config");
 
 // Mappings keys <-> sounds
-const mappings = require("./sounds/mappings");
+const mappings = config.sounds;
 
 // Allows us to listen for events from stdin
 readline.emitKeypressEvents(process.stdin);
 
-// Raw mode gets rid of standard keypress events and other
-// functionality Node.js adds by default
+// Raw mode gets rid of standard keypress events and other functionality Node.js adds by default
 process.stdin.setRawMode(true);
 
 let audio = new Audic();
@@ -27,18 +26,18 @@ audio.volume = config.volume;
 process.stdin.on('keypress', async (str, key) => {
 
     // "Raw" mode so we must do our own kill switch
-    if(key.sequence === '\u0003') {
+    if (key.sequence === '\u0003') {
         process.exit();
     }
 
     // User has triggered a keypress, now do whatever we want!
     // ...
-    //console.log(key);
+    //console.log(key);4
     //console.log(str);
 
     let soundFile;
-    for (let entry of mappings.entries) {
-        if (entry.key.sequence === key.sequence && entry.key.meta === key.meta) {
+    for (let entry of mappings) {
+        if (entry.key.name === key.name && entry.key.meta === key.meta) {
             soundFile = entry.file;
         }
     }
