@@ -19,6 +19,7 @@ readline.emitKeypressEvents(process.stdin);
 // Raw mode gets rid of standard keypress events and other functionality Node.js adds by default
 process.stdin.setRawMode(true);
 
+// Setup Sound library
 let audio = new Audic();
 audio.volume = config.volume;
 
@@ -31,10 +32,6 @@ process.stdin.on('keypress', async (str, key) => {
     }
 
     // User has triggered a keypress, now do whatever we want!
-    // ...
-    //console.log(key);4
-    //console.log(str);
-
     let soundFile;
     for (let entry of mappings) {
         if (entry.key.name === key.name && entry.key.meta === key.meta) {
@@ -50,6 +47,7 @@ process.stdin.on('keypress', async (str, key) => {
         await audio.play();
     } else {
         console.log(key);
+        console.log(str);
     }
 });
 
