@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "audic-forked": "^0.1.0",
-    "tinykeys": "^1.2.0"
+    "tinykeys": "^1.4.0"
   },
   "scripts": {
     "start": "node index.js",
